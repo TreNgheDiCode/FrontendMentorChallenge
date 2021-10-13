@@ -640,6 +640,7 @@ button:hover, .button:hover {
     -ms-grid-rows: (1fr)[2];
         grid-template-rows: repeat(2, 1fr);
         grid-template-areas: "logo links1 links2 cta" "social links1 links2 cta";
+    justify-items: start;
   }
 }
 
@@ -649,7 +650,7 @@ button:hover, .button:hover {
 
 .footer__logo {
   display: inline-block;
-  width: 13.75rem;
+  width: 11.25rem;
   height: 1.875rem;
   margin-bottom: 1.875rem;
 }
@@ -675,7 +676,7 @@ button:hover, .button:hover {
 }
 
 .footer__social a:not(:last-child) {
-  margin-right: 1rem;
+  margin-right: 0.675rem;
 }
 
 .footer__links {
@@ -689,6 +690,14 @@ button:hover, .button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media (min-width: 64em) {
+  .footer__links {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: start;
+  }
 }
 
 @media (min-width: 64em) {
@@ -714,6 +723,9 @@ button:hover, .button:hover {
 @media (min-width: 64em) {
   .footer__cta {
     grid-area: cta;
+    text-align: right;
+    -ms-grid-column-align: end;
+        justify-self: end;
   }
 }
 
