@@ -4,14 +4,19 @@
     padding: 2.5rem;
     text-align: center;
 
-    @include breakpoint-up(large) {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr) 2fr;
-        grid-template-rows: repeat(2, 1fr);
-        grid-template-areas: 
-        "logo links1 links2 cta"
-        "social links1 links2 cta";
-        justify-items: start;
+    
+
+    .container {
+        @include breakpoint-up(large) {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 2fr;
+            grid-template-rows: 1fr auto;
+            grid-template-areas: 
+                "logo links1 links2 cta"
+                "social links1 links2 cpr";
+            gap: 1rem;
+            justify-items: start;
+        }
     }
 
     a {
@@ -19,10 +24,14 @@
     }
 
     &__logo {
+        font-family: 'Monofett', cursive;
         display: inline-block;
         width: 11.25rem;
         height: 1.875rem;
-        margin-bottom: 1.875rem;
+
+        @include breakpoint-down(medium) {
+            margin-bottom: 1.875rem;
+        }
 
         @include breakpoint-up(large) {
             grid-area: logo;
@@ -30,15 +39,25 @@
     }
 
     &__social {
-        margin-bottom: 1.875rem;
+        @include breakpoint-down(medium) {
+            margin-bottom: 1.875rem;
+        }
 
         @include breakpoint-up(large) {
             grid-area: social;
+            align-self: end;
         }
 
         a {
             display: inline-block;
 
+            svg path {
+                transition: fill 150ms ease-in-out;
+            }
+
+            &:hover svg path {
+                fill: $limeGreen;
+            }
         }
         
         a:not(:last-child) {
@@ -50,8 +69,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        font-size: 0.9375rem;
 
         @include breakpoint-up(large) {
+            justify-content: space-between;
             align-items: start;
         }
 
@@ -62,7 +83,9 @@
         }
 
         &.col2 {
-            margin-bottom: 1.875rem;
+            @include breakpoint-down(medium) {
+                margin-bottom: 1.875rem;
+            }
 
             @include breakpoint-up(large) {
                 grid-area: links2;
@@ -71,6 +94,12 @@
 
         a {
             line-height: 2.25;
+
+            transition: color 250ms ease-in-out;
+
+            &:hover {
+                color: $limeGreen;
+            }
         }
     }
 
@@ -82,11 +111,20 @@
         }
 
         a.button {
-            margin-bottom: 1.875rem;
+            @include breakpoint-down(medium) {
+                margin-bottom: 1.875rem;
+            }
         }
     }
 
     &__copyright {
+        font-size: 0.9375rem;
 
+        @include breakpoint-up(large) {
+            grid-area: cpr;
+            align-self: end;
+            text-align: right;
+            justify-self: end;
+        }
     }
 }
